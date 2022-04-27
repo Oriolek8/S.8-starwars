@@ -17,16 +17,15 @@ password: JSON.parse(localStorage.getItem("password"))
  const handleSubmit = (e) => {
     e.preventDefault()
 
-    if(valor.nickname && valor.email && valor.password){
+    if(valor.nickname.includes("") && valor.email.includes("") && valor.password.includes("")){
         setEstaLogueado(true)         
     }
-    
 
 }
 const setLocalStorage = value => {
     try{
         setValor(value)
-        setEstaLogueado(value) 
+        
         window.localStorage.setItem("nickname", JSON.stringify(valor.nickname))
         window.localStorage.setItem("email", JSON.stringify(valor.email))
         window.localStorage.setItem("password", JSON.stringify(valor.password))
@@ -63,6 +62,7 @@ return(
             placeholder="Escribe tu nickname"
             value={valor.nickname}
             onChange={Change}
+            required
             />
                 
             <label>Email:</label>
@@ -73,6 +73,7 @@ return(
             placeholder="Escribe tu email"
             value={valor.email}
             onChange={Change}
+            required
             />
                 
             <label>Password:</label>
@@ -83,6 +84,7 @@ return(
             placeholder="Escribe tu contraseña"
             value={valor.password}
             onChange={Change}
+            required
             />
             <input
             type="submit"
